@@ -16,5 +16,35 @@ jobs:
       uses: actions/checkout@v2
       with:
         submodules: recursive
+    - uses: actions/setup-node@v3
+      with:
+        node-version: 20
+    - name: Get npm cache directory
+      id: npm-cache-dir
+      shell: bash
+      run: echo "dir=$(npm config get cache)" >> ${GITHUB_OUTPUT}
+    - uses: actions/cache@v3
+      id: npm-cache # use this to check for `cache-hit` ==> if: steps.npm-cache.outputs.cache-hit != 'true'
+      with:
+        path: ${{ steps.npm-cache-dir.outputs.dir }}
+        key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+        restore-keys: |
+          ${{ runner.os }}-node-
+    - uses: actions/cache@v3
+      with:
+        path: |
+          build/
+        key: buildroot-cache
     - name: Build
       run: make
+    - name: Website build
+      run: |
+        cd frontend
+        npm i
+        npm run build
+    - name: Archive code coverage results
+      uses: actions/upload-artifact@v3
+      with:
+          name: frontend/dist/
+          path: output/test/code-coverage.html
+
