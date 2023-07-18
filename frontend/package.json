@@ -1,0 +1,20 @@
+{
+  "name": "@matthieu-projects/my-linux-frontend",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "typescript": "^5.0.2",
+    "vite": "^4.4.0"
+  },
+  "dependencies": {
+    "v86": "^0.4.0",
+    "xterm": "^5.2.1",
+    "xterm-addon-fit": "^0.7.0"
+  }
+}
