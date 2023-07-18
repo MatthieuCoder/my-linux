@@ -7,7 +7,7 @@ import { FitAddon } from 'xterm-addon-fit';
 import "v86/v86.css";
 import v86Wasm from "v86/build/v86.wasm?url";
 import bios from "v86/bios/seabios.bin?url";
-import cdrom from "../../build/output/images/rootfs.iso9660?url";
+import cdrom from "../../build/images/rootfs.iso9660?url";
 import "./style.css";
 
 let emulator = new V86Starter({

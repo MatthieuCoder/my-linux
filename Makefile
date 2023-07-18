@@ -1,15 +1,14 @@
+# Simply builds the frontend
 build:
 	mkdir -p build
-	cd buildroot && make BR2_EXTERNAL=$(PWD)/matthieunux O=$(PWD)/build browser_linux_defconfig
-
-	cd buildroot && make BR2_EXTERNAL=$(PWD)/matthieunux O=$(PWD)/build  
+	cd buildroot \
+		&& make BR2_EXTERNAL=$(PWD)/matthieunux O=$(PWD)/build browser_linux_defconfig \
+		&& make BR2_EXTERNAL=$(PWD)/matthieunux O=$(PWD)/build
+# Cleans the folders
 clean:
 	rm -r build
-
-print_var:
-	echo $(PWD)
+# Opens the buildroot menuconfig
 menuconfig:
 	cd buildroot && make BR2_EXTERNAL=$(PWD)/matthieunux O=$(PWD)/build menuconfig
-upd:
-	cd buildroot && make BR2_EXTERNAL=$(PWD)/matthieunux O=$(PWD)/build browser_linux_defconfig
+
 .PHONY: build clean
