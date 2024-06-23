@@ -22,7 +22,7 @@ let emulator = new V86Starter({
   disable_keyboard: true,
   disable_mouse: true,
   disable_speaker: true,
-  network_relay_url: "wss://ws-net.matthieu-dev.xyz/router"
+  network_relay_url: "wss://wslan-router.lab.mpgn.dev/router"
 });
 
 var term = new Terminal();

@@ -138,11 +138,14 @@ async fn main() {
                 }
             })
         });
+    
+    let cert = std::env::var("SSL_CERT").unwrap();
+    let key = std::env::var("SSL_KEY").unwrap();
 
     warp::serve(routes)
         .tls()
-        .cert_path("/etc/ssl_server/cert.pem")
-        .key_path("/etc/ssl_server/cert.key")
+        .cert_path(cert)
+        .key_path(key)
         .run(([0, 0, 0, 0], 443))
         .await;
 }
